@@ -58,8 +58,8 @@ app.post('/api/create-checkout-session', async (req, res) => {
             payment_method_types: ['card'],
             line_items,
             mode: 'payment',
-          success_url: 'http://localhost:5500/success.html',
-cancel_url: 'http://localhost:5500/index.html',
+        success_url: 'https://phantomhood.netlify.app/success.html',
+cancel_url: 'https://phantomhood.netlify.app/index.html',
         });
 
         res.json({ url: session.url });
