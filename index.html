@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="logo">My Store</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#" id="cart-toggle">Cart (<span id="cart-count">0</span>)</a>
+        <a href="#">About</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <h1>Welcome to My Store</h1>
+        <p>Fresh styles, straight to your door.</p>
+    </section>
+
+    <section class="products" id="product-list">
+    </section>
+</main>
+
+<div id="cart-panel" class="cart-panel hidden">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <p class="cart-total">Total: $<span id="cart-total">0.00</span></p>
+    <button id="checkout-btn">Checkout</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
