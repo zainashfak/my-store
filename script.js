@@ -8,9 +8,11 @@ const cartTotalSpan = document.getElementById('cart-total');
 const productList = document.getElementById('product-list');
 const checkoutBtn = document.getElementById('checkout-btn');
 
+const API_URL = 'https://my-store-production-d0c3.up.railway.app';
+
 async function loadProducts() {
     try {
-        const res = await fetch('http://localhost:3000/api/products');
+        const res = await fetch(`${API_URL}/api/products`);
         const products = await res.json();
 
         productList.innerHTML = '';
@@ -85,7 +87,7 @@ checkoutBtn.addEventListener('click', async () => {
     }
 
     try {
-        const res = await fetch('http://localhost:3000/api/create-checkout-session', {
+        const res = await fetch(`${API_URL}/api/create-checkout-session`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ items: cart })
