@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Product = require('./models/Product');
+const Order = require('./models/Order');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
@@ -65,6 +66,28 @@ cancel_url: 'https://phantomhood.netlify.app/index.html',
         res.json({ url: session.url });
     } catch (err) {
         res.status(500).json({ error: err.message });
+    }
+});
+
+app.post('/api/orders', async (req, res) => {
+    try {
+        const { customerName, phone, address, city, items, totalAmount } = req.body;
+
+        const newOrder = new Order({
+            customerName,
+            phone,
+            address,
+            city,
+            items,
+            totalAmount
+        });
+
+        await newOrder.save();
+
+        res.status(201).json({ success: true, orderId: newOrder._id });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Could not place order' });
     }
 });
 

@@ -6,10 +6,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main style="text-align:center; padding: 100px 20px;">
-        <h1>Thank you for your order!</h1>
-        <p>Your payment was successful. A confirmation will be sent to your email.</p>
-        <a href="index.html">Back to store</a>
-    </main>
+    <h1>Order Placed!</h1>
+    <p>Thank you — please keep cash ready for delivery.</p>
+    <p id="orderIdDisplay"></p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const orderId = params.get('orderId');
+        if (orderId) {
+            document.getElementById('orderIdDisplay').textContent = `Order ID: ${orderId}`;
+        }
+    </script>
 </body>
 </html>

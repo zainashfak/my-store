@@ -41,7 +41,7 @@ function attachCartButtons() {
         button.addEventListener('click', () => {
             const name = button.dataset.name;
             const price = parseFloat(button.dataset.price);
-            cart.push({ name, price });
+            cart.push({ name, price, quantity: 1 });
             renderCart();
         });
     });
@@ -80,30 +80,14 @@ function renderCart() {
     });
 }
 
-checkoutBtn.addEventListener('click', async () => {
+checkoutBtn.addEventListener('click', () => {
     if (cart.length === 0) {
         alert('Your cart is empty!');
         return;
     }
 
-    try {
-        const res = await fetch(`${API_URL}/api/create-checkout-session`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ items: cart })
-        });
-
-        const data = await res.json();
-
-        if (data.url) {
-            window.location.href = data.url;
-        } else {
-            alert('Something went wrong starting checkout.');
-        }
-    } catch (err) {
-        console.error(err);
-        alert('Could not start checkout. Is the backend running?');
-    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'checkout.html';
 });
 
 loadProducts();
