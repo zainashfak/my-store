@@ -3,35 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Store</title>
+    <title>Phantomhood</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="site-header">
-    <div class="logo">My Store</div>
+    <div class="brand">
+        <span class="brand-name">Phantomhood</span>
+        <img src="images/logo.png" alt="Phantomhood" class="logo-img">
+    </div>
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Shop</a>
+        <a href="#product">Shop</a>
+        <a href="#refund">Refund Policy</a>
+        <a href="#contact">Contact</a>
         <a href="#" id="cart-toggle">Cart (<span id="cart-count">0</span>)</a>
-        <a href="#">About</a>
     </nav>
 </header>
 
+<section class="main-banner">
+    <div class="banner-left">
+        <img src="images/product-1.jpg" alt="Phantomhood Hoodie">
+        <div class="banner-left-content">
+            <span>New Arrival</span>
+            <h1>True to the Shadow</h1>
+            <a href="#product" class="banner-btn">Shop Now</a>
+        </div>
+    </div>
+</section>
+
 <main>
-    <section class="hero">
-        <h1>Welcome to My Store</h1>
-        <p>Fresh styles, straight to your door.</p>
+        <section class="product-spotlight" id="product">
+        <div class="product-gallery">
+            <img src="images/product-1.jpg" alt="Maskdown Balaclava Hoodie" class="main-image" id="main-image">
+            <div class="thumb-strip">
+                <img src="images/product-1.jpg" class="thumb active" data-full="images/product-1.jpg">
+                <img src="images/product-2.jpg" class="thumb" data-full="images/product-2.jpg">
+                <img src="images/product-3.jpg" class="thumb" data-full="images/product-3.jpg">
+                <img src="images/product-4.jpg" class="thumb" data-full="images/product-4.jpg">
+                <img src="images/product-5.jpg" class="thumb" data-full="images/product-5.jpg">
+                <img src="images/product-6.jpg" class="thumb" data-full="images/product-6.jpg">
+            </div>
+        </div>
+        <div class="product-info">
+            <span class="product-label">New Arrival</span>
+            <h1>Maskdown Balaclava Hoodie</h1>
+            <div class="price-row">
+                <span class="price-old">Rs 3,500</span>
+                <span class="price-new">Rs 2,799</span>
+            </div>
+            <p class="product-desc">Heavyweight cotton fleece, relaxed fit, built to outlast a season.</p>
+
+            <div class="size-selector">
+                <span class="size-label">Select Size</span>
+                <div class="size-options">
+                    <button class="size-btn" data-size="S">S</button>
+                    <button class="size-btn" data-size="M">M</button>
+                    <button class="size-btn" data-size="L">L</button>
+                    <button class="size-btn" data-size="XL">XL</button>
+                </div>
+            </div>
+
+            <button
+                class="add-to-cart"
+                data-name="Maskdown Balaclava Hoodie"
+                data-price="2799">
+                Add to Cart
+            </button>
+
+            <div class="product-details">
+                <h3>Product Details</h3>
+                <ul>
+                    <li>100% heavyweight cotton fleece, 400 GSM</li>
+                    <li>Relaxed, oversized fit</li>
+                    <li>Back print, matte finish</li>
+                    <li>Machine wash cold, do not tumble dry</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
-    <section class="products" id="product-list">
+    <section class="policy-section" id="refund">
+        <h2>Refund Policy</h2>
+        <p>Since payment is collected on delivery, there's no upfront risk to you. If your order arrives damaged or the wrong size, contact us within 3 days of delivery and we'll arrange a free exchange.</p>
+        <p>We don't offer cash refunds, but store credit or a replacement is always available for genuine issues. Items must be unworn, unwashed, and in original packaging.</p>
+    </section>
+
+    <section class="policy-section" id="contact">
+        <h2>Contact</h2>
+        <p>Questions about an order, sizing, or anything else — reach out and we'll get back to you as soon as we can.</p>
+        <a href="mailto:phantomhood.store@gmail.com" class="contact-email">phantomhood.store@gmail.com</a>
     </section>
 </main>
 
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <img src="images/logo.png" alt="Phantomhood" class="footer-logo-img">
+            <p>Cash on delivery, everywhere we ship.</p>
+            <a href="mailto:phantomhood.store@gmail.com">phantomhood.store@gmail.com</a>
+        </div>
+        <div class="footer-col">
+            <h4>Shop</h4>
+            <a href="#product">Hoodie</a>
+            <a href="#product">Sizing</a>
+        </div>
+        <div class="footer-col">
+            <h4>Support</h4>
+            <a href="#refund">Refund Policy</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Phantomhood. All rights reserved.</p>
+    </div>
+</footer>
+
 <div id="cart-panel" class="cart-panel hidden">
-    <h2>Your Cart</h2>
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button id="cart-close">&times;</button>
+    </div>
     <div id="cart-items"></div>
-    <p class="cart-total">Total: $<span id="cart-total">0.00</span></p>
+    <p class="cart-total">Total: Rs <span id="cart-total">0</span></p>
     <button id="checkout-btn">Checkout</button>
 </div>
 

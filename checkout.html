@@ -1,29 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Checkout - Cash on Delivery</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Phantomhood</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Checkout</h1>
-  <form id="checkoutForm">
-    <label>Full Name</label>
-    <input type="text" id="customerName" required>
 
-    <label>Phone Number</label>
-    <input type="tel" id="phone" required>
+<header class="site-header">
+    <div class="brand">
+        <span class="brand-name">Phantomhood</span>
+        <img src="images/logo.png" alt="Phantomhood" class="logo-img">
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#refund">Refund Policy</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+</header>
 
-    <label>Address</label>
-    <input type="text" id="address" required>
+<main class="checkout-page">
+    <div class="checkout-card">
+        <h1>Checkout</h1>
+        <p class="checkout-sub">Cash on Delivery — pay when your order arrives.</p>
 
-    <label>City</label>
-    <input type="text" id="city" required>
+        <form id="checkoutForm">
+            <div class="form-group">
+                <label for="customerName">Full Name</label>
+                <input type="text" id="customerName" required>
+            </div>
 
-    <p>Payment: Cash on Delivery</p>
-    <button type="submit">Place Order</button>
-  </form>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
 
-  <script src="checkout.js"></script>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" required>
+            </div>
+
+            <div class="payment-note">
+                <span>Payment Method</span>
+                <strong>Cash on Delivery</strong>
+            </div>
+
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <img src="images/logo.png" alt="Phantomhood" class="footer-logo-img">
+            <p>Cash on delivery, everywhere we ship.</p>
+            <a href="mailto:phantomhood.store@gmail.com">phantomhood.store@gmail.com</a>
+        </div>
+        <div class="footer-col">
+            <h4>Shop</h4>
+            <a href="index.html#product">Hoodie</a>
+        </div>
+        <div class="footer-col">
+            <h4>Support</h4>
+            <a href="index.html#refund">Refund Policy</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Phantomhood. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="checkout.js"></script>
 </body>
 </html>

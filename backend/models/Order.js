@@ -19,3 +19,12 @@ const orderSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Order', orderSchema);
+items: [
+    {
+      productId: String,
+      name: String,
+      price: Number,
+      quantity: Number,
+      size: String
+    }
+  ],
