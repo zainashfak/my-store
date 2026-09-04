@@ -8,6 +8,7 @@ document.getElementById('checkoutForm').addEventListener('submit', async (e) => 
 
   const orderData = {
     customerName: document.getElementById('customerName').value,
+    email: document.getElementById('email').value,
     phone: document.getElementById('phone').value,
     address: document.getElementById('address').value,
     city: document.getElementById('city').value,
