@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
 const Product = require('./models/Product');
 const Order = require('./models/Order');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -17,6 +18,41 @@ console.log('URI loaded:', process.env.MONGO_URI ? 'YES' : 'NO');
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('Connected to MongoDB!'))
     .catch((err) => console.error('Connection error:', err));
+
+// --- Email setup ---
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
+
+async function sendConfirmationEmail(toEmail, order) {
+    try {
+        const itemsList = order.items
+            .map(item => `<li>${item.name} - $${item.price}</li>`)
+            .join('');
+
+        await transporter.sendMail({
+            from: `"Phantomhood" <${process.env.EMAIL_USER}>`,
+            to: toEmail,
+            subject: 'Your Phantomhood Order Confirmation',
+            html: `
+                <h2>Thanks for your order, ${order.customerName}!</h2>
+                <p>We've received your order and it's being processed.</p>
+                <h3>Order Summary</h3>
+                <ul>${itemsList}</ul>
+                <p><strong>Total: $${order.totalAmount}</strong></p>
+                <p>Shipping to: ${order.address}, ${order.city}</p>
+                <p>We'll be in touch about delivery. Questions? Reply to this email.</p>
+            `
+        });
+        console.log('Confirmation email sent to', toEmail);
+    } catch (err) {
+        console.error('Error sending confirmation email:', err);
+    }
+}
 
 app.get('/api/products', async (req, res) => {
     try {
@@ -71,10 +107,11 @@ cancel_url: 'https://phantomhood.netlify.app/index.html',
 
 app.post('/api/orders', async (req, res) => {
     try {
-        const { customerName, phone, address, city, items, totalAmount } = req.body;
+        const { customerName, email, phone, address, city, items, totalAmount } = req.body;
 
         const newOrder = new Order({
             customerName,
+            email,
             phone,
             address,
             city,
@@ -83,6 +120,10 @@ app.post('/api/orders', async (req, res) => {
         });
 
         await newOrder.save();
+
+        if (email) {
+            sendConfirmationEmail(email, newOrder);
+        }
 
         res.status(201).json({ success: true, orderId: newOrder._id });
     } catch (err) {
