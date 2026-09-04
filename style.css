@@ -584,10 +584,45 @@ nav a:hover {
     color: var(--text);
 }
 
+/* Tablet / medium screens */
+@media (max-width: 900px) {
+    .product-spotlight {
+        gap: 40px;
+        padding: 60px 32px;
+    }
+}
+
 /* Mobile */
 @media (max-width: 700px) {
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px 20px;
+    }
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    nav a {
+        margin-left: 0;
+        font-size: 0.85rem;
+    }
     .banner-left {
-        min-height: 260px;
+        min-height: 220px;
+    }
+    .banner-left-content {
+        left: 20px;
+        bottom: 20px;
+    }
+    .banner-left-content h1 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+    .banner-btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
     }
     .product-spotlight {
         flex-direction: column;
@@ -596,6 +631,9 @@ nav a:hover {
     .product-spotlight-reversed .product-gallery {
         flex: 1;
     }
+    .thumb-strip {
+        flex-wrap: wrap;
+    }
     .policy-section {
         padding: 40px 24px;
     }
@@ -603,5 +641,22 @@ nav a:hover {
         grid-template-columns: 1fr;
         gap: 24px;
         padding: 40px 24px 20px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 420px) {
+    .banner-left {
+        min-height: 180px;
+    }
+    .banner-left-content h1 {
+        font-size: 1.15rem;
+    }
+    .product-info h1 {
+        font-size: 1.4rem;
+    }
+    .thumb {
+        width: 48px;
+        height: 48px;
     }
 }
