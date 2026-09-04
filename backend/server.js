@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const Product = require('./models/Product');
 const Order = require('./models/Order');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -20,15 +20,7 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((err) => console.error('Connection error:', err));
 
 // --- Email setup ---
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 async function sendConfirmationEmail(toEmail, order) {
     try {
@@ -36,8 +28,8 @@ async function sendConfirmationEmail(toEmail, order) {
             .map(item => `<li>${item.name} - $${item.price}</li>`)
             .join('');
 
-        await transporter.sendMail({
-            from: `"Phantomhood" <${process.env.EMAIL_USER}>`,
+        await resend.emails.send({
+            from: 'Phantomhood <onboarding@resend.dev>',
             to: toEmail,
             subject: 'Your Phantomhood Order Confirmation',
             html: `
