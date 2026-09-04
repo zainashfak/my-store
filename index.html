@@ -11,17 +11,37 @@
 <body>
 
 <header class="site-header">
+    <button class="hamburger" id="hamburger-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
     <div class="brand">
         <span class="brand-name">Phantomhood</span>
         <img src="images/logo.png" alt="Phantomhood" class="logo-img">
     </div>
-    <nav>
-        <a href="#product">Shop</a>
-        <a href="#refund">Refund Policy</a>
-        <a href="#contact">Contact</a>
-        <a href="#" id="cart-toggle">Cart (<span id="cart-count">0</span>)</a>
-    </nav>
+
+    <div class="header-icons">
+        <button class="icon-btn" id="search-toggle" aria-label="Search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <button class="icon-btn" id="cart-toggle" aria-label="Cart">
+            <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            <span id="cart-count" class="cart-badge">0</span>
+        </button>
+    </div>
 </header>
+
+<nav id="mobile-nav" class="mobile-nav hidden">
+    <a href="#product">Shop</a>
+    <a href="#refund">Refund Policy</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div id="search-bar" class="search-bar">
+    <input type="text" placeholder="Search products...">
+</div>
 
 <section class="main-banner">
     <div class="banner-left">
@@ -37,7 +57,11 @@
 <main>
         <section class="product-spotlight" id="product">
         <div class="product-gallery">
-            <img src="images/product-1.jpg" alt="Maskdown Balaclava Hoodie" class="main-image" id="main-image">
+            <div class="gallery-main">
+                <button class="gallery-arrow prev" id="gallery-prev" aria-label="Previous image">&#10094;</button>
+                <img src="images/product-1.jpg" alt="Maskdown Balaclava Hoodie" class="main-image" id="main-image">
+                <button class="gallery-arrow next" id="gallery-next" aria-label="Next image">&#10095;</button>
+            </div>
             <div class="thumb-strip">
                 <img src="images/product-1.jpg" class="thumb active" data-full="images/product-1.jpg">
                 <img src="images/product-2.jpg" class="thumb" data-full="images/product-2.jpg">
@@ -76,7 +100,7 @@
             <div class="product-details">
                 <h3>Product Details</h3>
                 <ul>
-                    <li>100% heavyweight cotton fleece, 400 GSM</li>
+                    <li>Soft cotton-blend fleece fabric</li>
                     <li>Relaxed, oversized fit</li>
                     <li>Back print, matte finish</li>
                     <li>Machine wash cold, do not tumble dry</li>
