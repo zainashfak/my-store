@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html, body {
+    touch-action: manipulation;
+}
+
 :root {
     --bg: #0B0B0C;
     --bg-elevated: #17171A;
