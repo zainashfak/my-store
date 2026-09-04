@@ -12,6 +12,8 @@ const mainImage = document.getElementById('main-image');
 
 const hamburgerToggle = document.getElementById('hamburger-toggle');
 const mobileNav = document.getElementById('mobile-nav');
+const navOverlay = document.getElementById('nav-overlay');
+const navClose = document.getElementById('nav-close');
 const searchToggle = document.getElementById('search-toggle');
 const searchBar = document.getElementById('search-bar');
 const galleryPrev = document.getElementById('gallery-prev');
@@ -100,10 +102,24 @@ cartClose.addEventListener('click', () => {
     cartPanel.classList.add('hidden');
 });
 
-if (hamburgerToggle && mobileNav) {
-    hamburgerToggle.addEventListener('click', () => {
-        mobileNav.classList.toggle('hidden');
-    });
+function openMenu() {
+    mobileNav.classList.add('open');
+    navOverlay.classList.remove('hidden');
+}
+
+function closeMenu() {
+    mobileNav.classList.remove('open');
+    navOverlay.classList.add('hidden');
+}
+
+if (hamburgerToggle) {
+    hamburgerToggle.addEventListener('click', openMenu);
+}
+if (navClose) {
+    navClose.addEventListener('click', closeMenu);
+}
+if (navOverlay) {
+    navOverlay.addEventListener('click', closeMenu);
 }
 
 if (searchToggle && searchBar) {
