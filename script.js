@@ -16,6 +16,8 @@ const searchToggle = document.getElementById('search-toggle');
 const searchBar = document.getElementById('search-bar');
 const galleryPrev = document.getElementById('gallery-prev');
 const galleryNext = document.getElementById('gallery-next');
+const searchInput = document.getElementById('search-input');
+const searchResult = document.getElementById('search-result');
 
 let thumbs = [];
 
@@ -107,6 +109,24 @@ if (hamburgerToggle && mobileNav) {
 if (searchToggle && searchBar) {
     searchToggle.addEventListener('click', () => {
         searchBar.classList.toggle('active');
+    });
+}
+
+if (searchInput && searchResult) {
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const query = searchInput.value.trim().toLowerCase();
+
+            if (query.includes('hoodie')) {
+                searchResult.textContent = '';
+                searchResult.classList.remove('not-found');
+                document.getElementById('product').scrollIntoView({ behavior: 'smooth' });
+                searchBar.classList.remove('active');
+            } else {
+                searchResult.textContent = 'Product not found';
+                searchResult.classList.add('not-found');
+            }
+        }
     });
 }
 

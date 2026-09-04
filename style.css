@@ -138,6 +138,14 @@ body {
     display: none;
 }
 
+.nav-category-label {
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 0 4px;
+}
+
 .mobile-nav a {
     color: var(--text);
     text-decoration: none;
@@ -166,7 +174,7 @@ body {
 }
 
 .search-bar.active {
-    max-height: 70px;
+    max-height: 110px;
     padding: 14px 24px;
 }
 
@@ -183,6 +191,16 @@ body {
 .search-bar input:focus {
     outline: none;
     border-color: var(--accent);
+}
+
+.search-result {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.search-result.not-found {
+    color: var(--accent);
 }
 
 /* Main banner (hero) */
